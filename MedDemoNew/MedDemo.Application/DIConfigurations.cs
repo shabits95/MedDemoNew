@@ -1,7 +1,7 @@
 ﻿using MedDemo.Application.Common;
-using MedDemo.Infrastructure.Interface;
+using MedDemo.Application.Interfaces.IServices;
 using Microsoft.Extensions.DependencyInjection;
-using MedDemo.Infrastructure.Repositories;
+using MedDemo.Application.Services;
 
 namespace MedDemo.Application
 {
@@ -10,7 +10,7 @@ namespace MedDemo.Application
         public static IServiceCollection AddDIApplication(this IServiceCollection services, AppSettings appSettings)
         {
             // Add service configurations here
-            services.AddTransient<IMedicineRepository, MedicineRepository>();
+            services.AddTransient<IMedicineService, MedicineService>();
 
             return services;
         }
