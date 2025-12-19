@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MedDemo.Infrastructure/MedDemo.Infrastructure.csproj" />
+  <Project Path="MedDemo.WebAPI/MedDemo.WebAPI.csproj" />
+</Solution>
