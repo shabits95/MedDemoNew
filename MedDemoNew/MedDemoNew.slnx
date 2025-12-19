@@ -1,4 +1,6 @@
 <Solution>
+  <Project Path="MedDemo.Application/MedDemo.Application.csproj" />
+  <Project Path="MedDemo.Domain/MedDemo.Domain.csproj" />
   <Project Path="MedDemo.Infrastructure/MedDemo.Infrastructure.csproj" />
   <Project Path="MedDemo.WebAPI/MedDemo.WebAPI.csproj" />
 </Solution>

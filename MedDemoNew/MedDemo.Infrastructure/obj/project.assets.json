@@ -1895,6 +1895,32 @@
         "runtime": {
           "lib/netcoreapp2.1/_._": {}
         }
+      },
+      "MedDemo.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MedDemo.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MedDemo.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MedDemo.Application.dll": {}
+        }
+      },
+      "MedDemo.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MediatR": "14.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MedDemo.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MedDemo.Domain.dll": {}
+        }
       }
     }
   },
@@ -4689,12 +4715,24 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "MedDemo.Application/1.0.0": {
+      "type": "project",
+      "path": "../MedDemo.Application/MedDemo.Application.csproj",
+      "msbuildProject": "../MedDemo.Application/MedDemo.Application.csproj"
+    },
+    "MedDemo.Domain/1.0.0": {
+      "type": "project",
+      "path": "../MedDemo.Domain/MedDemo.Domain.csproj",
+      "msbuildProject": "../MedDemo.Domain/MedDemo.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL >= 13.1.0",
       "GraphQL.EntityFramework >= 27.2.2",
+      "MedDemo.Application >= 1.0.0",
+      "MedDemo.Domain >= 1.0.0",
       "MediatR >= 14.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.22",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.22",
@@ -4734,7 +4772,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "F:\\PROJECT\\PERSONAL\\MedDemoNew\\MedDemoNew\\MedDemo.Application\\MedDemo.Application.csproj": {
+              "projectPath": "F:\\PROJECT\\PERSONAL\\MedDemoNew\\MedDemoNew\\MedDemo.Application\\MedDemo.Application.csproj"
+            },
+            "F:\\PROJECT\\PERSONAL\\MedDemoNew\\MedDemoNew\\MedDemo.Domain\\MedDemo.Domain.csproj": {
+              "projectPath": "F:\\PROJECT\\PERSONAL\\MedDemoNew\\MedDemoNew\\MedDemo.Domain\\MedDemo.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
