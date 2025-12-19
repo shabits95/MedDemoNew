@@ -1,0 +1,78 @@
+# .gitignore for MedDemo.WebAPI (.NET 8, ASP.NET Core)
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Logs
+*.log
+logs/
+
+# Publish outputs
+publish/
+
+# Npm & Yarn
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Others
+*.db
+*.sqlite
+*.pdb
+*.mdb
+*.opendb
+*.cache
+*.bak
+*.swp
+*.tmp
+
+# Test results
+TestResults/
+
+# Local NuGet packages
+*.nupkg
+*.snupkg
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# DotCover
+*.dotCover
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Azure Pipelines
+.azure-pipelines/
+
+# Docker
+**/docker-compose.*.yml
+**/Dockerfile*
+.dockerignore
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+.vs/
