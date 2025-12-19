@@ -1,6 +1,6 @@
-using CleanArchitecture.Application.Common;
+using MedDemo.Application.Common;
 
-namespace CleanArchitecture.Web.Extensions;
+namespace MedDemo.Web.Extensions;
 
 public static class CorsExtension
 {

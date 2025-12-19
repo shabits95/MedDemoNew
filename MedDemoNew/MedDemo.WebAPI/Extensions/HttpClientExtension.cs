@@ -1,4 +1,4 @@
-namespace CleanArchitecture.Web.Extensions;
+namespace MedDemo.Web.Extensions;
 
 public static class HttpClientExtension
 {

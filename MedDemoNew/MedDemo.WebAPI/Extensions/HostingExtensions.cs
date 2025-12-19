@@ -1,10 +1,10 @@
-using CleanArchitecture.Application;
-using CleanArchitecture.Application.Common;
-using CleanArchitecture.Infrastructure;
-using CleanArchitecture.Infrastructure.Data;
-using CleanArchitecture.Web.Middlewares;
+using MedDemo.Application;
+using MedDemo.Application.Common;
+using MedDemo.Infrastructure;
+using MedDemo.Infrastructure.Data;
+using MedDemo.Web.Middlewares;
 
-namespace CleanArchitecture.Web.Extensions;
+namespace MedDemo.Web.Extensions;
 
 public static class HostingExtensions
 {

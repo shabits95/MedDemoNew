@@ -1,13 +1,13 @@
 using System.Net;
-using CleanArchitecture.Domain.Constants;
-using CleanArchitecture.Shared.Models.Errors;
+using MedDemo.Domain.Constants;
+using MedDemo.Shared.Models.Errors;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using ValidationException = CleanArchitecture.Application.Common.Exceptions.ValidationException;
+using ValidationException = MedDemo.Application.Common.Exceptions.ValidationException;
 
-namespace CleanArchitecture.Web.Validations;
+namespace MedDemo.Web.Validations;
 
 public class ValidatorInterceptor : IValidatorInterceptor
 {

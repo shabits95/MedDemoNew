@@ -1,6 +1,5 @@
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Models;
 using MedDemo.Application.DTO;
 using MedDemo.WebAPI.SchemaFilter;
 using Swashbuckle.AspNetCore.SwaggerGen;

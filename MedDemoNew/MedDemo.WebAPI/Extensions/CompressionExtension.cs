@@ -1,7 +1,7 @@
 using System.IO.Compression;
 using Microsoft.AspNetCore.ResponseCompression;
 
-namespace CleanArchitecture.Web.Extensions;
+namespace MedDemo.Web.Extensions;
 
 public static class CompressionExtension
 {
