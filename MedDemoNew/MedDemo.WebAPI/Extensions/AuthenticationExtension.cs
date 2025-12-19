@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
-using MedDemo.Application.DTO;
+using MedDemo.Application.Common;
 using MedDemo.Domain.Authorization;
 using System.Security.Cryptography;
-using System.Security.Principal;
 using System.Text;
 
 namespace MedDemo.WebAPI.Extensions;

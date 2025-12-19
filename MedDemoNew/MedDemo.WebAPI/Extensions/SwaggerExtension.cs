@@ -1,8 +1,8 @@
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.OpenApi;
-using MedDemo.Application.DTO;
 using MedDemo.WebAPI.SchemaFilter;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using MedDemo.Application.Common;
 
 namespace MedDemo.WebAPI.Extensions;
 

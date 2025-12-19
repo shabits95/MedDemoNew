@@ -1,12 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+﻿using MedDemo.Application;
+using MedDemo.Application.Common;
+using MedDemo.Infrastructure.Data;
+using MedDemo.Infrastructure.Repositories.Common;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MedDemo.Infrastructure
 {
-    public static IServiceCollection AddDIInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static class DIConfiguration
     {
-
-        // Add service configurations here
-        return services;
+        public static IServiceCollection AddDIInfrastructure(this IServiceCollection services, AppSettings appSettings)
+        {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(appSettings.ConnectionStrings.DefaultConnection));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            // Add service configurations here
+            return services;
+        }
     }
 }

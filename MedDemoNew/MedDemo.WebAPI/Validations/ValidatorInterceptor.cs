@@ -1,6 +1,6 @@
 using System.Net;
 using MedDemo.Domain.Constants;
-using MedDemo.Shared.Models.Errors;
+using MedDemo.Application.DTO.Errors;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using FluentValidation.Results;

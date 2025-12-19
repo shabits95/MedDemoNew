@@ -1,0 +1,6 @@
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net8.0\MedDemo.Application.csproj.AssemblyReference.cache
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net8.0\MedDemo.Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net8.0\MedDemo.Application.AssemblyInfoInputs.cache
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net8.0\MedDemo.Application.AssemblyInfo.cs
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net8.0\MedDemo.Application.csproj.CoreCompileInputs.cache
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net8.0\MedDemo.Application.sourcelink.json

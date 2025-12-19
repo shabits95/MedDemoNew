@@ -1,10 +1,8 @@
 using HealthChecks.UI.Client;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using MedDemo.Application.DTO;
+using MedDemo.Application.Common;
 using MedDemo.Domain.Constants;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace MedDemo.WebAPI.Extensions;
 
@@ -44,9 +42,7 @@ public static class HealthCheckExtensions
             setup.AddHealthCheckEndpoint(
                 "Application Health",
                 $"{configuration.AppUrl}/healthz");
-        })
-        .AddInMemoryStorage(); // Use in-memory storage for development
-        // .AddPostgreSqlStorage(configuration.ConnectionStrings.DefaultConnection); // Use for production
+        }).AddPostgreSqlStorage(configuration.ConnectionStrings.DefaultConnection); // Use for production
 
         return services;
     }

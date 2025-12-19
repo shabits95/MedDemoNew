@@ -1,8 +1,6 @@
 using MedDemo.Application;
 using MedDemo.Application.Common;
-using MedDemo.Infrastructure;
-using MedDemo.Infrastructure.Data;
-using MedDemo.Web.Middlewares;
+using MedDemo.Domain;
 
 namespace MedDemo.Web.Extensions;
 
@@ -10,7 +8,7 @@ public static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder, AppSettings appsettings)
     {
-        builder.Services.AddInfrastructuresService(appsettings);
+        builder.Services.AddDIApplication(appsettings).AddDIDomain(appsettings);
         builder.Services.AddApplicationService(appsettings);
         builder.Services.AddWebAPIService(appsettings);
 
@@ -34,7 +32,7 @@ public static class HostingExtensions
         app.UseHttpsRedirection();
         app.UseCors("AllowSpecificOrigin");
         app.UseSwagger(appsettings);
-        app.ConfigureHealthCheck();
+        app.UseHealthChecks();
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();

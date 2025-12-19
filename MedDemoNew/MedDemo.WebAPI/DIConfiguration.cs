@@ -1,12 +1,11 @@
-using MedDemo.Web.Extensions;
-using MedDemo.Web.Middlewares;
 using FluentValidation;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using MedDemo.Application.DTO;
-using MedDemo.Domain.Authorization;
+using MedDemo.Application.Common;
+using MedDemo.Web.Extensions;
 using MedDemo.WebAPI.Extensions;
 using MedDemo.WebAPI.Middleware;
+using MedDemo.Domain.Authorization;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -44,10 +43,10 @@ public static class DIConfiguration
         // FluentValidation - Modern registration
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), includeInternalTypes: true);
 
-        services.SetupMvc();
+        services.AddMvcConfiguration();
 
         // Authentication & Authorization
-        ConfigureAuthentication(services, appSettings);
+        ConfigureAuthentication(builder, appSettings.Identity);
         services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
         // Middleware - Use Scoped for better lifecycle management
@@ -66,8 +65,8 @@ public static class DIConfiguration
         // HTTP Client - simple configuration without resilience extensions
         services.AddHttpClient();
 
-        services.AddSwaggerOpenAPI(appSettings);
-        services.SetupHealthCheck(appSettings);
+        services.AddSwaggerDocumentation(appSettings);
+        services.AddHealthCheckServices(appSettings);
 
         // JSON Serialization Configuration
         ConfigureJsonOptions(services);
@@ -75,14 +74,17 @@ public static class DIConfiguration
         return builder;
     }
 
-    private static void ConfigureAuthentication(IServiceCollection services, AppSettings appSettings)
+    private static void ConfigureAuthentication(WebApplicationBuilder builder, Identity identity)
     {
-        if (appSettings.Identity.IsLocal)
+        if (builder.Environment.IsProduction())
         {
-            services.AddAuthLocal(appSettings.Identity);
+            builder.Services.AddJwtAuthentication(identity);
         }
+        else
+        {
 
-        services.AddAuth(appSettings.Identity);
+            builder.Services.AddJwtAuthenticationLocal(identity);
+        }
     }
 
     private static void ConfigureJsonOptions(IServiceCollection services)

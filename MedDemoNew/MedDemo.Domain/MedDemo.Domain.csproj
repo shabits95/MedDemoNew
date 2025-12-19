@@ -7,14 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Extensions\" />
-    <Folder Include="Utilities\Interfaces\" />
-    <Folder Include="Utilities\Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="14.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="10.0.1" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace MedDemo.Infrastructure.Utilities
+namespace MedDemo.Application.Utilities
 {
 
     public class Pagination<T>(List<T> items, int count, int pageIndex, int pageSize)

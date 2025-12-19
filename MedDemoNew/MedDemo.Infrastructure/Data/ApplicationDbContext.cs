@@ -1,18 +1,21 @@
 using Microsoft.EntityFrameworkCore;
+using MedDemo.Domain.Entities;
 using System.Reflection;
 
-namespace MedDemo.Infrastructure.Data;
-
-public class ApplicationDbContext: DbContext
+namespace MedDemo.Infrastructure.Data
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-    protected override void OnModelCreating(ModelBuilder builder)
+    public class ApplicationDbContext : DbContext
     {
-        base.OnModelCreating(builder);
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-        builder.Seed();
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            builder.Seed();
+        }
+        public DbSet<Medicine> Medicine { get; set; }
     }
-    public DbSet<Medicine> Medicine { get; set; }
 }
