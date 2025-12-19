@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MedDemo.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e85af7e55522ee8ca2286bba95d4d1ef4d74ece9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17dd08b0dda37dc99bcd823f4e081f5205acbf97")]
 [assembly: System.Reflection.AssemblyProductAttribute("MedDemo.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MedDemo.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

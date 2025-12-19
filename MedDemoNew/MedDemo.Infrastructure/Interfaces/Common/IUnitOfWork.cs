@@ -1,4 +1,3 @@
-using MedDemo.Application.Interfaces.Common;
 using MedDemo.Infrastructure.Interface;
 
 namespace MedDemo.Application;
