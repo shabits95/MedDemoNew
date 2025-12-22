@@ -13,5 +13,7 @@ namespace MedDemo.Domain.Constants
         public const string GENERAL_ERROR = "general_error";
         public const string UNPROCESSABLE_ENTITY = "unprocessable_entity";
         public const string FORBIDDEN = "forbidden";
+        public const string TIMEOUT = "timeout";
+        public const string REQUEST_CANCELLED = "request_cancelled";
     }
 }

@@ -1,4 +1,4 @@
-using MedDemo.Shared.Models.AuthIdentity.UsersIdentity;
+using MedDemo.Domain.Entities;
 using FluentValidation;
 
 namespace MedDemo.Web.Validations;
@@ -7,25 +7,40 @@ public class MedicineRequestValidation : AbstractValidator<Medicine>
 {
     public MedicineRequestValidation()
     {
-        RuleFor(x => x.UserName)
-            .NotEmpty().WithMessage("Username is required.")
-            .MaximumLength(100).WithMessage("Username must not exceed 100 characters.");
-
         RuleFor(x => x.Name)
             .NotEmpty().WithMessage("Name is required.")
             .MaximumLength(100).WithMessage("Name must not exceed 100 characters.");
 
-        RuleFor(x => x.Email)
-            .NotEmpty().WithMessage("Email is required.")
-            .MaximumLength(100).WithMessage("Email must not exceed 100 characters.")
-              .EmailAddress().WithMessage("Email must be a valid email address.");
+        RuleFor(x => x.Brand)
+            .NotEmpty().WithMessage("Brand is required.")
+            .MaximumLength(100).WithMessage("Brand must not exceed 100 characters.");
 
-        RuleFor(x => x.Password)
-            .NotEmpty().WithMessage("Password is required.")
-            .MinimumLength(8).WithMessage("Password must be at least 8 characters long.")
-            .Matches("[A-Z]").WithMessage("Password must contain at least one uppercase letter.")
-            .Matches("[a-z]").WithMessage("Password must contain at least one lowercase letter.")
-            .Matches("[0-9]").WithMessage("Password must contain at least one digit.")
-            .Matches("[^a-zA-Z0-9]").WithMessage("Password must contain at least one special character.");
+        RuleFor(x => x.Dosage)
+            .NotEmpty().WithMessage("Dosage is required.")
+            .MaximumLength(100).WithMessage("Dosage must not exceed 100 characters.");
+
+        RuleFor(x => x.Form)
+            .NotEmpty().WithMessage("Form is required.")
+            .MaximumLength(100).WithMessage("Form must not exceed 100 characters.");
+
+        RuleFor(x => x.Price)
+             .NotEmpty().WithMessage("Price is required.")
+             .Must(BeAValidDecimal).WithMessage("Price must be a valid decimal number.")
+             .GreaterThan(0).WithMessage("Price must be greater than zero.")
+             .PrecisionScale(10, 2, true).WithMessage("Price must not exceed 10 digits with 2 decimal places.");
+
+        RuleFor(x => x.ExpiryDate)
+            .NotEmpty().WithMessage("Expiry date is required.")
+            .GreaterThan(DateTime.UtcNow)
+            .WithMessage("Expiry date must be in the future.");
+
+        RuleFor(x => x.IsPrescriptionRequired)
+            .NotNull()
+            .WithMessage("Please specify whether a prescription is required.");
+    }
+    // Helper method
+    private bool BeAValidDecimal(decimal value)
+    {
+        return value is decimal;
     }
 }

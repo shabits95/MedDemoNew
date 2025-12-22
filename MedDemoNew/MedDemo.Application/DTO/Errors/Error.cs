@@ -1,6 +1,6 @@
 namespace MedDemo.Application.DTO.Errors;
 
-public class Error(string code = null, string message = null)
+public class Error(string code, string message)
 {
     public string Code { get; set; } = code;
     public string Message { get; set; } = message;

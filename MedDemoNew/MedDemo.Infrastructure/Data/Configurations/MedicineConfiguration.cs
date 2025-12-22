@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System.Net.NetworkInformation;
+using MedDemo.Domain.Entities;
+using MedDemo.Domain.Enums;
 
 namespace MedDemo.Infrastructure.Data.Configurations;
 

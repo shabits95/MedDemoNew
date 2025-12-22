@@ -1,9 +1,9 @@
 using FluentValidation;
 using MedDemo.Application.Common;
+using MedDemo.Domain.Authorization;
 using MedDemo.Web.Extensions;
 using MedDemo.WebAPI.Extensions;
 using MedDemo.WebAPI.Middleware;
-using MedDemo.Domain.Authorization;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Reflection;
@@ -14,8 +14,9 @@ namespace MedDemo.WebAPI;
 
 public static class DIConfiguration
 {
-    public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder, AppSettings appSettings)
+    public static WebApplicationBuilder AddConfigureServices(this WebApplicationBuilder builder, AppSettings appSettings)
     {
+        using var loggerFactory = LoggerFactory.Create(builder => { });
         var services = builder.Services;
 
         // Configure JSON Console Logging for ELK Stack
@@ -50,7 +51,6 @@ public static class DIConfiguration
         services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
         // Middleware - Use Scoped for better lifecycle management
-        services.AddScoped<GlobalExceptionMiddleware>();
         services.AddScoped<LoggingMiddleware>();
         services.AddScoped<PerformanceMiddleware>();
         services.AddSingleton<HealthCheckIPRestrictionMiddleware>();
@@ -103,8 +103,11 @@ public static class DIConfiguration
     // Extension method for configuring the app pipeline
     public static WebApplication ConfigureMiddleware(this WebApplication app, AppSettings appSettings)
     {
+        using var loggerFactory = LoggerFactory.Create(builder => { });
+        var logger = loggerFactory.CreateLogger("Exceptions");
+
         // Exception handling first
-        app.UseMiddleware<GlobalExceptionMiddleware>();
+        app.UseGlobalExceptionHandler(logger, app.Environment);
 
         // Performance monitoring
         app.UseMiddleware<PerformanceMiddleware>();

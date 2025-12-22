@@ -56,7 +56,7 @@ public sealed class ValidateModelFilter : IActionFilter
 
         var firstError = fluentErrorEntry.Errors.First();
 
-        if (firstError.Exception is not ValidationException validationException)
+        if (firstError.Exception is not Application.Exceptions.ValidationException validationException)
         {
             return false;
         }
@@ -91,13 +91,13 @@ public sealed class ValidateModelFilter : IActionFilter
         };
     }
 
-    private static Error CreateError(string key, ModelError error, ModelStateEntry entry)
+    private static Application.DTO.Errors.Error CreateError(string key, ModelError error, ModelStateEntry entry)
     {
         // Security: Sanitize error messages to prevent information leakage
         var sanitizedMessage = SanitizeErrorMessage(error.ErrorMessage);
         var sanitizedKey = SanitizePropertyName(key);
 
-        return new Error(
+        return new Application.DTO.Errors.Error(
             $"{ApplicationConstants.Name}.{ErrorRespondCode.BAD_REQUEST}",
             sanitizedMessage)
         {
@@ -161,7 +161,7 @@ public sealed class ValidateModelFilter : IActionFilter
         ArgumentNullException.ThrowIfNull(errorResponse);
 
         // Limit number of errors to prevent response bloat
-        if (errorResponse.Errors?.Count > MaxErrorsToReport)
+        if (errorResponse.Errors?.Count() > MaxErrorsToReport)
         {
             errorResponse.Errors = errorResponse.Errors
                 .Take(MaxErrorsToReport)

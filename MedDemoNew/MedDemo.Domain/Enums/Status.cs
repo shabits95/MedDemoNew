@@ -1,9 +1,11 @@
-namespace MedDemo.Shared.Domain.Enums;
-
-public enum Status
+namespace MedDemo.Domain.Enums
 {
-    Pending,
-    Active,
-    InActive,
-    Archive
+
+    public enum Status
+    {
+        Pending,
+        Active,
+        InActive,
+        Archive
+    }
 }

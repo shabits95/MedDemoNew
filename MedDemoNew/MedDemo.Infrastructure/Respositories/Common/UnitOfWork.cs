@@ -1,5 +1,5 @@
 using MedDemo.Application;
-using MedDemo.Application.Common.Exceptions;
+using MedDemo.Application.Exceptions;
 using MedDemo.Infrastructure.Data;
 using MedDemo.Infrastructure.Interface;
 

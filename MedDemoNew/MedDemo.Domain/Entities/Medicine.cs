@@ -10,6 +10,8 @@
 
         public string? Description { get; set; }
 
+        public string? Status { get; set; }
+
         public string Dosage { get; set; } = string.Empty; // e.g. "500 mg"
 
         public string Form { get; set; } = string.Empty; // Tablet, Syrup, Injection

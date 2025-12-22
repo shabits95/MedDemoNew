@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Diagnostics;
 using MedDemo.Application.Exceptions;
-using MedDemo.Application.Utilities;
 using MedDemo.Domain.Constants;
 using MedDemo.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
+//using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Net;
 using System.Text.Json;

@@ -1,6 +1,10 @@
 using MedDemo.Application;
 using MedDemo.Application.Common;
 using MedDemo.Domain;
+using MedDemo.WebAPI.Middleware;
+using MedDemo.Infrastructure;
+using MedDemo.WebAPI;
+using MedDemo.WebAPI.Extensions;
 
 namespace MedDemo.Web.Extensions;
 
@@ -8,9 +12,8 @@ public static class HostingExtensions
 {
     public static WebApplication ConfigureServices(this WebApplicationBuilder builder, AppSettings appsettings)
     {
-        builder.Services.AddDIApplication(appsettings).AddDIDomain(appsettings);
-        builder.Services.AddApplicationService(appsettings);
-        builder.Services.AddWebAPIService(appsettings);
+        builder.Services.AddDIApplication(appsettings).AddDIInfrastructure(appsettings);
+        builder.AddConfigureServices(appsettings);
 
         return builder.Build();
     }
@@ -20,19 +23,16 @@ public static class HostingExtensions
         using var loggerFactory = LoggerFactory.Create(builder => { });
         using var scope = app.Services.CreateScope();
 
-        if (!appsettings.UseInMemoryDatabase)
-        {
-            var initialize = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitializer>();
-            await initialize.InitializeAsync();
-        }
-        app.UseMiddleware<GlobalExceptionMiddleware>();
-        app.ConfigureExceptionHandler(loggerFactory.CreateLogger("Exceptions"));
+        
+        //app.UseMiddleware<GlobalExceptionMiddleware>();
+        app.UseGlobalExceptionHandler(loggerFactory.CreateLogger("Exceptions"), app.Environment);
         app.UseMiddleware<LoggingMiddleware>();
         app.UseMiddleware<PerformanceMiddleware>();
+        app.UseHsts();
         app.UseHttpsRedirection();
         app.UseCors("AllowSpecificOrigin");
-        app.UseSwagger(appsettings);
-        app.UseHealthChecks();
+        app.UseSwaggerDocumentation(appsettings);
+        app.MapHealthCheckEndpoints();
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();

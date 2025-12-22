@@ -1,5 +1,5 @@
 using MedDemo.Application.Common;
-using MedDemo.Application.Common.Exceptions;
+using MedDemo.Application.Exceptions;
 using MedDemo.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);

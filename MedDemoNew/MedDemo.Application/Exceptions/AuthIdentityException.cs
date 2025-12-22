@@ -3,7 +3,7 @@ using MedDemo.Domain.Constants;
 using MedDemo.Domain.Enums;
 using MedDemo.Shared.Domain.Enums;
 
-namespace MedDemo.Application.Common.Exceptions
+namespace MedDemo.Application.Exceptions
 {
 
     [ExcludeFromCodeCoverage]

@@ -1,10 +1,9 @@
-using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.Json;
+using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 
-namespace MedDemo.WebAPI.Middleware;
+namespace MyApp.WebAPI.Middleware;
 
 public sealed class GlobalExceptionMiddleware(
     ILogger<GlobalExceptionMiddleware> logger,
