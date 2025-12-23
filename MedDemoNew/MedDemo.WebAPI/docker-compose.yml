@@ -1,0 +1,62 @@
+﻿version: "3.9"
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: meddemo-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: meddemo
+      POSTGRES_USER: meduser
+      POSTGRES_PASSWORD: medpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - F:/docker-data/postgres_data:/var/lib/postgresql/data
+    networks:
+      - meddemo-network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: meddemo-rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Management UI
+    volumes:
+      - F:/docker-data/rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - meddemo-network
+
+  meddemo-webapi:
+    build:
+      context: F:/PROJECT/PERSONAL/MedDemoNew/MedDemoNew
+      dockerfile: MedDemo.WebAPI/Dockerfile
+    container_name: meddemo-webapi
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - rabbitmq
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+
+      # PostgreSQL connection
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=meddemo;Username=meduser;Password=medpassword
+
+      # RabbitMQ connection
+      RabbitMQ__HostName: rabbitmq
+      RabbitMQ__Port: 5672
+      RabbitMQ__UserName: guest
+      RabbitMQ__Password: guest
+
+    ports:
+      - "5000:8080"
+    networks:
+      - meddemo-network
+
+volumes:
+  postgres_data:
+
+networks:
+  meddemo-network:
+    driver: bridge

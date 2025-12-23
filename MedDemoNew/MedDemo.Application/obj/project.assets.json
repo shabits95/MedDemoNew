@@ -2,6 +2,24 @@
   "version": 3,
   "targets": {
     "net8.0": {
+      "AutoMapper/16.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "10.0.0",
+          "Microsoft.Extensions.Options": "10.0.0",
+          "Microsoft.IdentityModel.JsonWebTokens": "8.14.0"
+        },
+        "compile": {
+          "lib/net8.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/AutoMapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MediatR/14.0.0": {
         "type": "package",
         "dependencies": {
@@ -477,6 +495,30 @@
     }
   },
   "libraries": {
+    "AutoMapper/16.0.0": {
+      "sha512": "JIhkKjEsUcIPPbCR7cGQlH3a2ySLW2Tof6CXcJb5WbaoUkniREpJOlC2ROkaM/nck2b5JjptLIUdHvbItGvLGQ==",
+      "type": "package",
+      "path": "automapper/16.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "automapper.16.0.0.nupkg.sha512",
+        "automapper.nuspec",
+        "icon.png",
+        "lib/net10.0/AutoMapper.dll",
+        "lib/net10.0/AutoMapper.xml",
+        "lib/net471/AutoMapper.dll",
+        "lib/net471/AutoMapper.xml",
+        "lib/net8.0/AutoMapper.dll",
+        "lib/net8.0/AutoMapper.xml",
+        "lib/net9.0/AutoMapper.dll",
+        "lib/net9.0/AutoMapper.xml",
+        "lib/netstandard2.0/AutoMapper.dll",
+        "lib/netstandard2.0/AutoMapper.xml"
+      ]
+    },
     "MediatR/14.0.0": {
       "sha512": "r5fwUO6NBvOFKaiMRx/gRrD1MEHHOio5yEdzSLs2OMeD2e9ZKnZaBQM6A6vVBEWJF4VY41vplXmDMOY1YvpqNA==",
       "type": "package",
@@ -1207,8 +1249,10 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "AutoMapper >= 16.0.0",
       "MedDemo.Domain >= 1.0.0",
-      "Microsoft.EntityFrameworkCore >= 9.0.11"
+      "Microsoft.EntityFrameworkCore >= 9.0.11",
+      "Microsoft.EntityFrameworkCore.Abstractions >= 9.0.11"
     ]
   },
   "packageFolders": {
@@ -1265,7 +1309,15 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "AutoMapper": {
+            "target": "Package",
+            "version": "[16.0.0, )"
+          },
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[9.0.11, )"
+          },
+          "Microsoft.EntityFrameworkCore.Abstractions": {
             "target": "Package",
             "version": "[9.0.11, )"
           }

@@ -5,6 +5,7 @@ using MedDemo.Web.Extensions;
 using MedDemo.WebAPI.Extensions;
 using MedDemo.WebAPI.Middleware;
 using Microsoft.AspNetCore.Authorization;
+using MedDemo.Application.Mappings;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Reflection;
 using System.Text.Json;
@@ -51,9 +52,9 @@ public static class DIConfiguration
         services.AddSingleton<IAuthorizationHandler, HasScopeHandler>();
 
         // Middleware - Use Scoped for better lifecycle management
-        services.AddScoped<LoggingMiddleware>();
-        services.AddScoped<PerformanceMiddleware>();
-        services.AddSingleton<HealthCheckIPRestrictionMiddleware>();
+        //services.AddScoped<LoggingMiddleware>();
+        //services.AddScoped<PerformanceMiddleware>();
+        //services.AddSingleton<HealthCheckIPRestrictionMiddleware>();
 
         // Infrastructure Services
         services.AddHealthChecks()

@@ -1,8 +1,9 @@
-using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
-using Microsoft.OpenApi;
-using MedDemo.WebAPI.SchemaFilter;
-using Swashbuckle.AspNetCore.SwaggerGen;
+
+using FluentValidation;
 using MedDemo.Application.Common;
+using MedDemo.WebAPI.SchemaFilter;
+using Microsoft.OpenApi;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace MedDemo.WebAPI.Extensions;
 
@@ -19,7 +20,7 @@ public static class SwaggerExtensions
         ArgumentNullException.ThrowIfNull(services);
         ArgumentNullException.ThrowIfNull(appSettings);
 
-        services.AddFluentValidationRulesToSwagger();
+        services.AddValidatorsFromAssemblyContaining<Program>();
 
         services.AddEndpointsApiExplorer();
 

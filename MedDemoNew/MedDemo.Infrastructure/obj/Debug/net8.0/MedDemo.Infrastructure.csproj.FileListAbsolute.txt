@@ -1,4 +1,5 @@
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\bin\Debug\net8.0\MedDemo.Infrastructure.deps.json
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\bin\Debug\net8.0\MedDemo.Infrastructure.runtimeconfig.json
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\bin\Debug\net8.0\MedDemo.Infrastructure.dll
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\bin\Debug\net8.0\MedDemo.Infrastructure.pdb
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\bin\Debug\net8.0\MedDemo.Application.dll
@@ -15,4 +16,5 @@ F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\obj\Debug\net8.
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\obj\Debug\net8.0\MedDemo.Infrastructure.dll
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\obj\Debug\net8.0\refint\MedDemo.Infrastructure.dll
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\obj\Debug\net8.0\MedDemo.Infrastructure.pdb
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\obj\Debug\net8.0\MedDemo.Infrastructure.genruntimeconfig.cache
 F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Infrastructure\obj\Debug\net8.0\ref\MedDemo.Infrastructure.dll

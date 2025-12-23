@@ -1,7 +1,7 @@
 using MedDemo.Application.Interfaces.Common;
 using MedDemo.Domain.Entities;
 
-namespace MedDemo.Infrastructure.Interface
+namespace MedDemo.Application.Interface
 {
 
     public interface IMedicineRepository : IGenericRepository<Medicine>

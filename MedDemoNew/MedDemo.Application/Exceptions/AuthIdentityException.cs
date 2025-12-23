@@ -1,7 +1,6 @@
-using System.Diagnostics.CodeAnalysis;
 using MedDemo.Domain.Constants;
 using MedDemo.Domain.Enums;
-using MedDemo.Shared.Domain.Enums;
+using System.Diagnostics.CodeAnalysis;
 
 namespace MedDemo.Application.Exceptions
 {

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace MedDemo.Shared.Domain.Enums;
+namespace MedDemo.Domain.Enums;
 
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Role

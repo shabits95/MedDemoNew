@@ -1,4 +1,4 @@
-namespace MedDemo.Shared.Domain.Enums;
+namespace MedDemo.Domain.Enums;
 
 public enum MediaType
 {

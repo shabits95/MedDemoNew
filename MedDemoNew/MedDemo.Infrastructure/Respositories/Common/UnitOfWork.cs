@@ -1,7 +1,7 @@
-using MedDemo.Application;
+using MedDemo.Application.Interfaces.Common;
 using MedDemo.Application.Exceptions;
+using MedDemo.Application.Interface;
 using MedDemo.Infrastructure.Data;
-using MedDemo.Infrastructure.Interface;
 
 namespace MedDemo.Infrastructure.Repositories.Common
 {

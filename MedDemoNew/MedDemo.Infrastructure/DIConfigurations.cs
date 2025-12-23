@@ -1,7 +1,7 @@
-﻿using MedDemo.Application;
-using MedDemo.Application.Common;
-using MedDemo.Infrastructure.Data;
+﻿using MedDemo.Application.Common;
 using MedDemo.Infrastructure.Repositories.Common;
+using MedDemo.Infrastructure.Data;
+using MedDemo.Application.Interfaces.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

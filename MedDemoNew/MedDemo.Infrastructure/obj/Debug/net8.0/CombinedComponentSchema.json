@@ -93,5 +93,5 @@
     }
   },
   "type": "object",
-  "SourceSegments": "C:\\Users\\HP\\.nuget\\packages\\aspire.npgsql.entityframeworkcore.postgresql\\13.1.0\\ConfigurationSchema.json"
+  "SourceSegments": "C:\\Users\\HP\\.nuget\\packages\\aspire.npgsql.entityframeworkcore.postgresql\\9.5.2\\ConfigurationSchema.json"
 }
