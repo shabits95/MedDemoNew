@@ -25,7 +25,7 @@ public static class HealthCheckExtensions
                 connectionString: configuration.ConnectionStrings.DefaultConnection,
                 name: HealthCheck.DBHealthCheck,
                 failureStatus: HealthStatus.Unhealthy,
-                tags: [HealthCheck.InfrastructureCheck, "ready", "db"]
+                tags: [HealthCheck.InfrastructureCheck, "ready", "db", "postgres"]
             );
 
         // Add more health checks as needed (example)

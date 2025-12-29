@@ -3,7 +3,7 @@ using System.Text.Json;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyApp.WebAPI.Middleware;
+namespace MedDemo.WebAPI.Middleware;
 
 public sealed class GlobalExceptionMiddleware(
     ILogger<GlobalExceptionMiddleware> logger,

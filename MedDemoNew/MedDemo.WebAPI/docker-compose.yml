@@ -1,32 +1,64 @@
-﻿version: "3.9"
-
-services:
+﻿services:
   postgres:
-    image: postgres:latest
+    image: postgres:16-alpine
     container_name: meddemo-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: meddemo
       POSTGRES_USER: meduser
       POSTGRES_PASSWORD: medpassword
+      POSTGRES_INITDB_ARGS: "-E UTF8"
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_HOST_AUTH_METHOD: scram-sha-256
     ports:
-      - "5432:5432"
+      - "15432:5432"
     volumes:
-      - F:/docker-data/postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - meddemo-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meduser -d meddemo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    command: >
+      postgres
+      -c shared_buffers=256MB
+      -c max_connections=200
+      -c effective_cache_size=1GB
+      -c maintenance_work_mem=64MB
+      -c checkpoint_completion_target=0.9
+      -c wal_buffers=16MB
+      -c default_statistics_target=100
+      -c random_page_cost=1.1
+      -c effective_io_concurrency=200
+      -c work_mem=2MB
+      -c min_wal_size=1GB
+      -c max_wal_size=4GB
 
   rabbitmq:
-    image: rabbitmq:3-management
+    image: rabbitmq:3.13-management-alpine
     container_name: meddemo-rabbitmq
     restart: unless-stopped
+    hostname: meddemo-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: meduser
+      RABBITMQ_DEFAULT_PASS: medpassword
+      RABBITMQ_DEFAULT_VHOST: /
     ports:
-      - "5672:5672"     # AMQP
+      - "5672:5672"     # AMQP protocol
       - "15672:15672"   # Management UI
     volumes:
-      - F:/docker-data/rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_data:/var/lib/rabbitmq
     networks:
       - meddemo-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_port_connectivity"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
 
   meddemo-webapi:
     build:
@@ -35,28 +67,84 @@ services:
     container_name: meddemo-webapi
     restart: unless-stopped
     depends_on:
-      - postgres
-      - rabbitmq
+      postgres:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
     environment:
       ASPNETCORE_ENVIRONMENT: Development
-
-      # PostgreSQL connection
-      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=meddemo;Username=meduser;Password=medpassword
-
-      # RabbitMQ connection
+      ASPNETCORE_URLS: http://+:8080
+      
+      ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=meddemo;Username=meduser;Password=medpassword;Pooling=true;MinPoolSize=1;MaxPoolSize=20;"
+      
       RabbitMQ__HostName: rabbitmq
       RabbitMQ__Port: 5672
-      RabbitMQ__UserName: guest
-      RabbitMQ__Password: guest
-
+      RabbitMQ__UserName: meduser
+      RabbitMQ__Password: medpassword
+      RabbitMQ__VirtualHost: /
+      
+      Logging__LogLevel__Default: Information
+      Logging__LogLevel__Microsoft: Warning
+      Logging__LogLevel__Microsoft.AspNetCore: Warning
+      
+      AllowedHosts: "*"
     ports:
       - "5000:8080"
     networks:
       - meddemo-network
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: meddemo-pgadmin
+    restart: unless-stopped
+    profiles:
+      - debug
+      - tools
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@meddemo.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - meddemo-network
+    depends_on:
+      - postgres
 
 volumes:
   postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: F:/docker-data/postgres_data
+  rabbitmq_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: F:/docker-data/rabbitmq_data
+  pgadmin_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: F:/docker-data/pgadmin_data
 
 networks:
   meddemo-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

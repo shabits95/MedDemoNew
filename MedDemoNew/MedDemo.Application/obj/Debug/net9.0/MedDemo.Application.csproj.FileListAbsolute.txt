@@ -1,0 +1,16 @@
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\bin\Debug\net9.0\MedDemo.Application.deps.json
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\bin\Debug\net9.0\MedDemo.Application.dll
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\bin\Debug\net9.0\MedDemo.Application.pdb
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\bin\Debug\net9.0\MedDemo.Domain.dll
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\bin\Debug\net9.0\MedDemo.Domain.pdb
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.csproj.AssemblyReference.cache
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.GeneratedMSBuildEditorConfig.editorconfig
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.AssemblyInfoInputs.cache
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.AssemblyInfo.cs
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.csproj.CoreCompileInputs.cache
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.sourcelink.json
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo..A52418DE.Up2Date
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.dll
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\refint\MedDemo.Application.dll
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\MedDemo.Application.pdb
+F:\PROJECT\PERSONAL\MedDemoNew\MedDemoNew\MedDemo.Application\obj\Debug\net9.0\ref\MedDemo.Application.dll
